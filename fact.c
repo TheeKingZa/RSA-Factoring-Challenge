@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+/**
+ * factorize - Factorize a number and print prime factors.
+ *
+ * @number: number to factorize.
+ */
 
 void factorize(int number)
 {
@@ -15,7 +20,7 @@ void factorize(int number)
 			printf(" %d", i);
 			first_factor = 0;
 		}
-		else 
+		else
 		{
 			printf(" %d", i);
 		}
@@ -24,7 +29,14 @@ void factorize(int number)
 }
 printf("\n");
 }
-
+/**
+ * main - Entry point.
+ *
+ * @argc: The number of command-line arguments.
+ * @argv: An array containing the command-line.
+ *
+ * Return: EXIT_SUCCESS or EXIT_FAiLURE on failure.
+ */
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
@@ -33,17 +45,19 @@ int main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	FILE *file = fopen(argv[1], "r");
+
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error opening file.\n");
 		return (EXIT_FAILURE);
 	}
-	
-	char line[20]; 
+
+	char line[20];
 	/* Assuming the numbers are not larger than 20 digits */
 	while (fgets(line, sizeof(line), file))
 	{
 		int number = atoi(line);
+
 		factorize(number);
 	}
 	fclose(file);
